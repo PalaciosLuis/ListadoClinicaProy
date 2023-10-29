@@ -1,0 +1,81 @@
+﻿@model IEnumerable<ProyClinica2023.Models.sp_ListarCitasPorMedicoYAnio>
+
+@{
+    ViewBag.Title = "sp_ListarCitasPorMedicoYAnio";
+}
+
+<h2>Consultar Citas por medico</h2>
+<nav>
+    <p>
+        @Html.ActionLink("ListarCitas", "ListarCitas")
+    </p>
+</nav>
+
+
+@using(Html.BeginForm())
+ {
+    <div>
+
+        Codigo: @Html.DropDownList("codMedico", (SelectList)ViewBag.listar_medicos)
+        Anio: @Html.DropDownList("fecha", (SelectList)ViewBag.anio_cita)
+
+
+        Consultar
+        <button class="btn btn-primary">Consultar</button>
+    </div>
+
+
+ }
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nrocita)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codpac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nompac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pago)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descrip)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nrocita)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.codpac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nompac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pago)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descrip)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

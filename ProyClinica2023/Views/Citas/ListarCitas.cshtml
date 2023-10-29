@@ -1,0 +1,98 @@
+﻿@model IEnumerable<ProyClinica2023.Models.Citas>
+
+@{
+    ViewBag.Title = "ListarCitas";
+}
+
+<h2>ListarCitas</h2>
+<nav>
+    <p>
+        @Html.ActionLink("sp_ListarCitasPorMedicoYAnio", "sp_ListarCitasPorMedicoYAnio")
+    </p>
+</nav>
+@using (Html.BeginForm())
+{
+
+
+    <tr>
+        <td>Contador: @ViewBag.contador</td>
+        <br>
+        <td>Suma de Importes:S/ @ViewBag.suma_citas</td>
+        <br>
+
+
+
+
+    </tr>
+}
+
+<p>
+    @Html.ActionLink("Create New", "NuevaCita", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nrocita)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codmed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codpac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pago)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descrip)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nrocita)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.codmed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.codpac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descrip)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "ActualizarCitaPorNroCita", new { id = item.nrocita }, new { @class = "btn btn-warning" })
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+
